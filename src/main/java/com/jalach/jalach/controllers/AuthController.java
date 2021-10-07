@@ -5,6 +5,7 @@ import com.jalach.jalach.services.AuthService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,4 +37,13 @@ public class AuthController {
         return null;
     }
     
+    @GetMapping(value = "login")
+    public Company login(@RequestBody Company company){
+        Company loggedCompany = authService.loginCompany(company);
+        if(loggedCompany != null){
+            loggedCompany.setPassword(null);
+            return loggedCompany;
+        }
+        return null;
+    }
 }

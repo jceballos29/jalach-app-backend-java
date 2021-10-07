@@ -10,6 +10,9 @@ import com.jalach.jalach.models.Company;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+
 @Repository
 @Transactional
 public class AuthServiceImp implements AuthService{
@@ -40,6 +43,24 @@ public class AuthServiceImp implements AuthService{
         return entityManager.merge(company);
     }
 
+    @Override
+    public Company loginCompany(Company company) {
+        String query = "FROM Company WHERE user = :user";
+        List<Company> matchCompany = entityManager.createQuery(query, Company.class).setParameter("user", company.getUser()).getResultList();
 
+        if(matchCompany.isEmpty()){
+            return null;
+        }
+
+        String passwordHased = matchCompany.get(0).getPassword();
+
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+
+        if(argon2.verify(passwordHased, company.getPassword())){
+            return matchCompany.get(0);
+        }
+
+        return null;
+    }
     
 }
