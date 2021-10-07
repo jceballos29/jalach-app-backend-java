@@ -29,8 +29,17 @@ public class AuthServiceImp implements AuthService{
     }
 
     @Override
+    public boolean validateCompanyByRut(Integer rut) {
+        String query = "FROM Company WHERE rut = :rut";
+        List<Company> matchCompany = entityManager.createQuery(query, Company.class).setParameter("rut", rut).getResultList();
+        return !matchCompany.isEmpty();
+    }
+
+    @Override
     public Company registerCompany(Company company) {
         return entityManager.merge(company);
     }
+
+
     
 }
