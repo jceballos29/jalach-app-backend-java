@@ -53,10 +53,10 @@ public class AuthServiceImp implements AuthService{
         }
 
         String passwordHased = matchCompany.get(0).getPassword();
+        char [] passwordCompany = company.getPassword().toCharArray();
 
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-
-        if(argon2.verify(passwordHased, company.getPassword())){
+        if(argon2.verify(passwordHased, passwordCompany)){
             return matchCompany.get(0);
         }
 
