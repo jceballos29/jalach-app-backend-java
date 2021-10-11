@@ -15,7 +15,7 @@ import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
 @RestController
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value = "/api/v1")
 public class AuthController {
 
@@ -37,7 +37,7 @@ public class AuthController {
         return null;
     }
     
-    @GetMapping(value = "login")
+    @PostMapping(value = "login")
     public Company login(@RequestBody Company company){
         Company loggedCompany = authService.loginCompany(company);
         if(loggedCompany != null){
