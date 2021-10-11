@@ -1,8 +1,8 @@
 # Jalach App
 
-**Version:** _1.0.0_
-**Lenguage:** _JAVA_
-**Frameeork:** _Spring_
+**Version:** _1.0.0_  
+**Lenguage:** _JAVA_  
+**Frameeork:** _Spring_  
 ## Sistema básico de gestión financiera para bares
 
 Esta aplicación web permitirá llevar un control total de los procesos relacionados a la gestión de un bar, desde las ventas diarias hasta verificación de nómina.
