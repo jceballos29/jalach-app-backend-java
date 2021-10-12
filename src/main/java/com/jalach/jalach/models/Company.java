@@ -1,7 +1,5 @@
 package com.jalach.jalach.models;
 
-import java.sql.Time;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -38,10 +36,10 @@ public class Company {
     private String phone;
 
     @Column(name = "opening_time")
-    private Time opening_time;
+    private String opening_time;
 
     @Column(name = "closing_time")
-    private Time closing_time;
+    private String closing_time;
 
     @Column(name = "first_time")
     private boolean first_time = true;
@@ -111,19 +109,19 @@ public class Company {
         this.phone = phone;
     }
 
-    public Time getOpening_time() {
+    public String getOpening_time() {
         return opening_time;
     }
 
-    public void setOpening_time(Time opening_time) {
+    public void setOpening_time(String opening_time) {
         this.opening_time = opening_time;
     }
 
-    public Time getClosing_time() {
+    public String getClosing_time() {
         return closing_time;
     }
 
-    public void setClosing_time(Time closing_time) {
+    public void setClosing_time(String closing_time) {
         this.closing_time = closing_time;
     }
 

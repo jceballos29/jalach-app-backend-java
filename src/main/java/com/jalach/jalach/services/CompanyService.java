@@ -2,8 +2,10 @@ package com.jalach.jalach.services;
 
 import com.jalach.jalach.models.Company;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface CompanyService extends JpaRepository<Company, Integer> {
-    
+public interface CompanyService {
+ 
+    Company deleteCompany(Integer rut);
+    Company updateCompany(Integer rut, Company updatedCompany);
+    Company setBusinessHours (Integer rut, Company businessHours);
+    Company setNotFirstTime(Integer rut);
 }
